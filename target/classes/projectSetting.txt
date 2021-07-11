@@ -1,0 +1,14 @@
+项目搭建：1.pom.xml 导入jar包
+	 			2.application.yml 配置springBoot和数据库
+	 			3.App.java是项目的启动类
+
+数据库设计：
+    商城，点餐，买电影票，图书借书系统
+        1.用户表tbl_user
+            id      username        password
+
+        2.类别表
+            帽子衣服裤子
+        3.商品表，菜单表，电影票表，音乐表
+        4.订单表
+
