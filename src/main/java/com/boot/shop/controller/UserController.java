@@ -42,10 +42,7 @@ public class UserController extends BaseController{
 
     @RequestMapping("/main")
     public String main(int uid, HttpServletRequest request){
-        System.out.println(uid);
         // selectById是BaseMapper封装的函数，根据id查询
-        UserBean bean = userMapper.selectById(uid);
-        String username = bean.getUsername();
         request.setAttribute("bean", userMapper.selectById(uid));
         return "/main";
     }
