@@ -7,6 +7,10 @@ mybatis-plus:
 
 # Spring配置
 spring:
+  messages:
+    encoding: utf-8
+  banner:
+    charset: UTF-8
   freemarker:
     suffix: .html
     template-loader-path: classpath:/templates/
