@@ -18,39 +18,46 @@
 <body>
 <div style="padding:0px; margin:0px;">
     <ul class="breadcrumb" style="  margin:0px; " >
-        <li><a href="#">类别管理</a></li>
-        <li>查询类别</li>
+        <li><a href="#">商品管理</a></li>
+        <li>查询商品</li>
     </ul>
 </div>
-<form class="form-inline" method="get" action="/category/list">
+<form class="form-inline">
     <div class="row alert alert-info"  style="margin:0px; padding:3px;" >
-
-        <div class="form-group">
-            <label class="" for="activename">类别名称：</label>
-            <input type="text" value="${category!}" class="form-control" name="category">
-        </div>
-
-        <input type="submit"   class="btn btn-danger"     value="查询"/>
-        <a  class="btn btn-success"  href="/category/add">添加类别</a>
-
+        <a  class="btn btn-success"  href="/product/add?cid=${cid}">添加商品</a>
+        <a class="btn btn-warning" href="/category/list">返回上一级</a>
     </div>
     <div class="row" style="padding:15px; padding-top:0px; ">
         <table class="table  table-condensed table-striped">
             <tr>
                 <th>编号</th>
+                <th>商品</th>
+                <th>单价</th>
+                <th>剩余数量</th>
+                <th>logo</th>
+                <th>热卖</th>
                 <th>类别</th>
                 <th>操作</th>
             </tr>
             <#list retList as bean>
             <tr>
-                <td>${bean.id}</td>
-                <td>${bean.category}</td>
+                <td>${(bean.id)!}</td>
+                <td>${(bean.product)!}</td>
+                <td>${(bean.price)!}元</td>
+                <td>${(bean.num)!}个</td>
+                <td>
+                    <a href="${(bean.logo)!}" target="_blank">
+                        ${(bean.logo)!}
+                    </a>
+                </td>
+                <td>
+                    <#if bean.hot == 1>热卖</#if>
+                    <#if bean.hot == 0>非热卖</#if>
+                </td>
+                <td>${(bean.category)!}</td>
                 <th>
-                    <a href="/product/list?cid=${bean.id}">商品</a>
-                    <#if !category??||category==''>
-                    <a href="/category/add?id=${bean.id}">修改</a>
-                    <a href="/category/del?id=${bean.id}">删除</a>
-                    </#if>
+                    <a href="/product/add?id=${bean.id}&cid=${cid}">修改</a>
+                    <a href="/product/del?id=${bean.id}&cid=${cid}">删除</a>
                 </th>
             </tr>
             </#list>

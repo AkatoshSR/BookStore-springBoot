@@ -22,16 +22,16 @@
         <li>查询类别</li>
     </ul>
 </div>
-<form class="form-inline">
+<form class="form-inline" method="get" action="/category/list">
     <div class="row alert alert-info"  style="margin:0px; padding:3px;" >
 
         <div class="form-group">
             <label class="" for="activename">类别名称：</label>
-            <input type="email" class="form-control" id="activename" placeholder="请输入类别名称">
+            <input type="text" value="${category!}" class="form-control" name="category">
         </div>
 
-        <input type="button"   class="btn btn-danger"     value="查询"/>
-        <a  class="btn btn-success"  href="student_add.html">添加类别</a>
+        <input type="submit"   class="btn btn-danger"     value="查询"/>
+        <a  class="btn btn-success"  href="/category/add">添加类别</a>
 
     </div>
     <div class="row" style="padding:15px; padding-top:0px; ">
@@ -46,8 +46,11 @@
                 <td>${bean.id}</td>
                 <td>${bean.category}</td>
                 <th>
-                    <a href="">修改</a>
-                    <a href="">删除</a>
+                    <a href="/product/list?cid=${bean.id}">商品</a>
+                    <#if !category??||category==''>
+                    <a href="/category/add?id=${bean.id}">修改</a>
+                    <a href="/category/del?id=${bean.id}">删除</a>
+                    </#if>
                 </th>
             </tr>
             </#list>

@@ -1,5 +1,5 @@
 mybatis-plus:
-  type-aliases-package: com.boot.jx.bean
+  type-aliases-package: com.boot.shop.bean
   global-config:
     refresh-mapper: true
 #  configuration:
